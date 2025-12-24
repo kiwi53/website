@@ -37,8 +37,14 @@
             
             // Check if we have a route for this relative path
             if (routes.hasOwnProperty(relativePath)) {
-                const newPath = '/' + repoName + routes[relativePath];
-                window.location.replace(newPath);
+                const targetPath = routes[relativePath];
+                const fullPath = '/' + repoName + targetPath;
+                
+                // Store the original clean path for display
+                sessionStorage.setItem('originalPath', window.location.pathname);
+                
+                // Redirect to the actual file
+                window.location.replace(fullPath);
             } else {
                 // If no route found, try to display a helpful 404 page
                 document.write(`
