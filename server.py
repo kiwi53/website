@@ -32,6 +32,10 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         if self.path == '/website' or self.path == '/website/':
             self.path = '/index.html'
         
+        # Route /game-launcher to Game Launcher/game-launcher.html
+        elif self.path == '/game-launcher' or self.path == '/game-launcher/':
+            self.path = '/Game Launcher/game-launcher.html'
+        
         # Route /website/game-launcher to Game Launcher/game-launcher.html
         elif self.path == '/website/game-launcher' or self.path == '/website/game-launcher/':
             self.path = '/Game Launcher/game-launcher.html'
@@ -49,9 +53,17 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_error(404, f"Game not found: {game_name}")
                 return
         
+        # Route /macro to Macro/index.html
+        elif self.path == '/macro' or self.path == '/macro/':
+            self.path = '/Macro/index.html'
+        
         # Route /website/macro to Macro/index.html
         elif self.path == '/website/macro' or self.path == '/website/macro/':
             self.path = '/Macro/index.html'
+        
+        # Route /malware to Malware/malware.html
+        elif self.path == '/malware' or self.path == '/malware/':
+            self.path = '/Malware/malware.html'
         
         # Route /website/malware to Malware/malware.html
         elif self.path == '/website/malware' or self.path == '/website/malware/':
@@ -146,6 +158,7 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def handle_api_games(self):
         # Search for any 'games' directories under the project; support moved folders
         games = []
+        seen_games = set()  # Track game IDs to avoid duplicates
         games_dirs = list(DIRECTORY.rglob('games'))
 
         print(f"handle_api_games: searching under {DIRECTORY}; found games dirs: {len(games_dirs)} -> {games_dirs}")
@@ -159,6 +172,14 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 if not entry.is_dir():
                     print("   skipping non-dir", entry)
                     continue
+                
+                # Skip if we've already seen this game
+                if entry.name in seen_games:
+                    print(f"   skipping duplicate game: {entry.name}")
+                    continue
+                
+                seen_games.add(entry.name)
+                
                 # read metadata if present
                 data = {}
                 data_file = entry / 'data.json'
