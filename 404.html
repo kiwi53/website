@@ -8,6 +8,13 @@
         // GitHub Pages 404 handler for client-side routing
         (function() {
             const path = window.location.pathname;
+            
+            // Don't redirect if this is a request for a resource file (CSS, JS, images, etc.)
+            if (path.match(/\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|json)$/i)) {
+                console.log('Resource file not found:', path);
+                return; // Let it show 404 for missing resources
+            }
+            
             const pathSegments = path.split('/').filter(s => s);
             
             // Determine if we're on GitHub Pages (has repo name) or localhost
@@ -52,10 +59,14 @@
             if (targetPath) {
                 const fullPath = repoName ? '/' + repoName + targetPath : targetPath;
                 
-                // Simply redirect - don't try to preserve clean URL as it breaks relative paths
+                // Redirect to the actual file
                 console.log('Redirecting from', window.location.pathname, 'to', fullPath);
                 window.location.replace(fullPath);
-            } else {
+                return; // Stop execution
+            }
+            
+            // If no route found, display 404 page
+            console.log('No route found for:', window.location.pathname);
                 // If no route found, try to display a helpful 404 page
                 document.write(`
                     <!DOCTYPE html>
@@ -112,7 +123,6 @@
                     </body>
                     </html>
                 `);
-            }
         })();
     </script>
 </head>
