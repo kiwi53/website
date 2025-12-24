@@ -1,0 +1,16 @@
+{
+  "name": "web and apps",
+  "colour": "#5E6472",
+  "state": "default",
+  "blocks": [
+    {
+      "name": "test",
+      "message0": "debug",
+      "args0": [
+        {"name": "direction", "options": ["up", "down"], "argType": "dropdown"},
+        {"name": "amount", "value": 1, "argType": "value", "input": "numbers"}
+      ],
+      "shape": "middle"
+    }
+  ]
+}

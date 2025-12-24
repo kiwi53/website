@@ -1,0 +1,20 @@
+{
+  "name": "debug",
+  "colour": "#942323",
+  "state": "debug",
+  "blocks": [
+
+
+{
+      "name": "debug",
+      "message0": "value: %1, boolean: %2, dropdown: %3",
+      "args0": [
+        {"name": "value", "value": 1, "argType": "value", "input": "numbers"},
+        {"name": "boolean", "value": 1, "argType": "boolean", "input": "none"},
+        {"name": "dropdown", "options": ["+", "-", "*", "/"], "argType": "dropdown"}
+      ],
+      "shape": "middle"
+    }
+]
+}
+

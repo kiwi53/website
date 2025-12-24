@@ -1,0 +1,89 @@
+{
+  "name": "mouse",
+  "colour": "#337EFF",
+  "state": "default",
+  "blocks": [
+
+    
+    {
+      "name": "move",
+      "message0": "move mouse to x: %1 y: %2",
+      "args0": [
+        {"name": "X", "value": 100, "argType": "value", "input": "numbers"},
+        {"name": "Y", "value": 100, "argType": "value", "input": "numbers"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "glide",
+      "message0": "glide mouse to x: %1 y: %2 in %3 seconds",
+      "args0": [
+        {"name": "X", "value": 100, "argType": "value", "input": "numbers"},
+        {"name": "Y", "value": 100, "argType": "value", "input": "numbers"},
+        {"name": "TIME", "value": 2, "argType": "value", "input": "numbers"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "scroll_mouse",
+      "message0": "scroll mouse %1 by %2 amount",
+      "args0": [
+        {"name": "direction", "options": ["up", "down"], "argType": "dropdown"},
+        {"name": "amount", "value": 1, "argType": "value", "input": "numbers"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "press_mouse",
+      "message0": "click mouse button %1",
+      "args0": [
+        {"name": "button", "options": ["left", "right", "middle"], "argType": "dropdown"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "double_press_mouse",
+      "message0": "double click mouse button %1",
+      "args0": [
+        {"name": "button", "options": ["left", "right", "middle"], "argType": "dropdown"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "mouse_x",
+      "message0": "current mouse x position",
+      "args0": [],
+      "shape": "value"
+    },
+
+
+    {
+      "name": "mouse_y",
+      "message0": "current mouse y position",
+      "args0": [],
+      "shape": "value"
+    }
+    
+
+
+    
+
+
+
+
+
+
+
+
+  ]
+}

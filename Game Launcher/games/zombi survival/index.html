@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Survival</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="gameUI">
+            <div class="ui-top">
+                <div class="stat">
+                    <span class="label">Health:</span>
+                    <div class="health-bar">
+                        <div id="healthFill" class="health-fill"></div>
+                    </div>
+                    <span id="healthText" class="value">100/100</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Ammo:</span>
+                    <span id="ammoText" class="value">30/90</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Wave:</span>
+                    <span id="waveText" class="value">1</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Score:</span>
+                    <span id="scoreText" class="value">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="startScreen" class="screen">
+            <h1>🧟 ZOMBIE SURVIVAL 🧟</h1>
+            <p>Survive waves of zombies!</p>
+            <div class="controls-info">
+                <h3>Controls:</h3>
+                <p><strong>WASD</strong> - Move</p>
+                <p><strong>Mouse</strong> - Aim</p>
+                <p><strong>Left Click</strong> - Shoot</p>
+                <p><strong>R</strong> - Reload</p>
+            </div>
+            <button id="startBtn" class="btn">Start Game</button>
+        </div>
+        
+        <div id="gameOverScreen" class="screen hidden">
+            <h1>GAME OVER</h1>
+            <p>You survived <span id="finalWave">0</span> waves</p>
+            <p>Final Score: <span id="finalScore">0</span></p>
+            <button id="restartBtn" class="btn">Restart</button>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "name": "pong",
+    "description": "Classic Pong game with AI opponent",
+    "thumbnail": "",
+    "version": "1.0.0",
+    "state": "released",
+    "developer": "keeyweey",
+    "release_date": "21/12/2025",
+    "catagories": {
+        "singleplayer": true,
+        "multiplayer": false,
+        "retro": true
+    }
+}

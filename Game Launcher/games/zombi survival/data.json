@@ -1,0 +1,14 @@
+{
+    "name": "zombie survival",
+    "description": "Survive waves of zombies! Use WASD to move, mouse to aim, and click to shoot.",
+    "thumbnail": "",
+    "version": "1.0.0",
+    "state": "WIP",
+    "developer": "keeyweey",
+    "release_date": "21/12/2025",
+    "catagories": {
+        "singleplayer": true,
+        "multiplayer": false,
+        "retro": false
+    }
+}

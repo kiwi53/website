@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower Defence</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="gameUI">
+            <div class="ui-top">
+                <div class="stat">
+                    <span class="label">💰 Gold:</span>
+                    <span id="goldText" class="value">100</span>
+                </div>
+                <div class="stat">
+                    <span class="label">❤️ Lives:</span>
+                    <span id="livesText" class="value">20</span>
+                </div>
+                <div class="stat">
+                    <span class="label">🌊 Wave:</span>
+                    <span id="waveText" class="value">1</span>
+                </div>
+                <div class="stat">
+                    <span class="label">👹 Enemies:</span>
+                    <span id="enemiesText" class="value">0</span>
+                </div>
+            </div>
+            
+            <div class="tower-menu">
+                <h3>Build Towers</h3>
+                <div class="tower-buttons">
+                    <button class="tower-btn" data-type="basic" data-cost="50">
+                        <div class="tower-icon basic-tower"></div>
+                        <div class="tower-name">Basic</div>
+                        <div class="tower-cost">💰50</div>
+                        <div class="tower-info">Damage: 10<br>Range: 100</div>
+                    </button>
+                    <button class="tower-btn" data-type="rapid" data-cost="75">
+                        <div class="tower-icon rapid-tower"></div>
+                        <div class="tower-name">Rapid</div>
+                        <div class="tower-cost">💰75</div>
+                        <div class="tower-info">Damage: 5<br>Fast Fire</div>
+                    </button>
+                    <button class="tower-btn" data-type="sniper" data-cost="100">
+                        <div class="tower-icon sniper-tower"></div>
+                        <div class="tower-name">Sniper</div>
+                        <div class="tower-cost">💰100</div>
+                        <div class="tower-info">Damage: 50<br>Long Range</div>
+                    </button>
+                    <button class="tower-btn" data-type="splash" data-cost="125">
+                        <div class="tower-icon splash-tower"></div>
+                        <div class="tower-name">Splash</div>
+                        <div class="tower-cost">💰125</div>
+                        <div class="tower-info">AOE Damage<br>Range: 80</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="startScreen" class="screen">
+            <h1>🏰 TOWER DEFENCE 🏰</h1>
+            <p>Defend your base from enemy waves!</p>
+            <div class="controls-info">
+                <h3>How to Play:</h3>
+                <p>• Click a tower type to select it</p>
+                <p>• Click on the path to place towers</p>
+                <p>• Towers auto-attack enemies in range</p>
+                <p>• Survive as many waves as possible!</p>
+                <p>• Don't let enemies reach the end!</p>
+            </div>
+            <button id="startBtn" class="btn">Start Game</button>
+        </div>
+        
+        <div id="gameOverScreen" class="screen hidden">
+            <h1>GAME OVER</h1>
+            <p>You survived <span id="finalWave">0</span> waves</p>
+            <p>Total Gold Earned: <span id="finalGold">0</span></p>
+            <button id="restartBtn" class="btn">Restart</button>
+        </div>
+        
+        <button id="startWaveBtn" class="start-wave-btn">Start Wave</button>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

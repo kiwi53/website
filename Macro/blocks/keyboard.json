@@ -1,0 +1,81 @@
+{
+  "name": "keyboard",
+  "colour": "#63CA2B",
+  "state": "default",
+  "blocks": [
+
+
+    {
+      "name": "press_key",
+      "message0": "press key %1",
+      "args0": [
+        {"name": "key", "value": "a", "argType": "value", "input": "key"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "press_key_for",
+      "message0": "hold key %1 for %2 seconds",
+      "args0": [
+        {"name": "key", "value": "a", "argType": "value", "input": "key"},
+        {"name": "time", "value": 1, "argType": "value", "input": "numbers"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "type_string",
+      "message0": "type %1",
+      "args0": [
+        {"name": "text", "value": "Hello World!", "argType": "value", "input": "text"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "wait_for_key",
+      "message0": "wait for key %1 to be pressed",
+      "args0": [
+        {"name": "key", "value": "a", "argType": "value", "input": "key"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "wait_any_key",
+      "message0": "wait for any key to be pressed",
+      "args0": [],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "press_key_with_modifier",
+      "message0": "press key %1 with modifier %2",
+      "args0": [
+        {"name": "key", "value": "a", "argType": "value", "input": "key"},
+        {"name": "modifier", "options": ["ctrl", "L-shift", "R-shift", "L-alt", "R-alt", "windows"], "argType": "dropdown"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "hold_key_with_modifier",
+      "message0": "hold key %1 with modifier %2 for %3 seconds",
+      "args0": [
+        {"name": "key", "value": "a", "argType": "value", "input": "key"},
+        {"name": "modifier", "options": ["ctrl", "Lshift", "Rshift", "L-alt", "R-alt", "windows"], "argType": "dropdown"},
+        {"name": "duration", "value": 3, "argType": "value", "input": "numbers"}
+      ],
+      "shape": "middle"
+    }
+
+
+  ]
+}

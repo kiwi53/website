@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro - Block Programming</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Blockly CDN -->
+    <script src="https://unpkg.com/blockly@10.4.3/blockly.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../index.html">← Back to Main</a>
+        </div>
+        <div class="header-menus">
+            <div class="dropdown">
+                <button class="dropdown-btn">File ▼</button>
+                <div class="dropdown-content">
+                    <button id="fileNew">New</button>
+                    <button id="fileLoad">Load from your computer</button>
+                    <button id="fileSave">Save to your computer</button>
+                </div>
+            </div>
+            <button id="settingsBtn" class="dropdown-btn">Settings</button>
+        </div>
+        <h1>Macro Block</h1>
+        <div class="controls">
+            <div id="agentStatus" class="agent-status disconnected" title="Local agent status">🔴 Agent Disconnected</div>
+            <a href="https://github.com/kiwi53/website/releases/download/MacroAgent/MacroAgent.exe" 
+               download 
+               class="btn-download" 
+               title="Download Macro Agent">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="currentColor">
+                    <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/>
+                </svg>
+            </a>
+            <button id="startAll" class="btn-run">▶ Start</button>
+            <button id="clickRunToggle" class="btn-toggle">Click→Run: ON</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Blockly workspace -->
+        <main class="workspace">
+            <div id="blocklyDiv" style="height: 100%; width: 100%;"></div>
+            <button id="pluginsBtn" class="btn-plugins" title="Manage Plugins">🧩</button>
+            <div class="zoom-controls">
+                <button id="zoomInBtn" class="zoom-btn" title="Zoom In">+</button>
+                <button id="zoomOutBtn" class="zoom-btn" title="Zoom Out">−</button>
+            </div>
+        </main>
+
+        <!-- Stage panel -->
+        <aside class="stage-panel">
+            <div class="stage-selector">
+                <select id="displaySource">
+                    <option value="">Select a source...</option>
+                    <optgroup label="Screens" id="screenGroup"></optgroup>
+                    <optgroup label="Windows" id="appGroup"></optgroup>
+                    <optgroup label="Cameras" id="cameraGroup"></optgroup>
+                </select>
+                <button id="refreshSources" class="btn-refresh">🔄</button>
+            </div>
+            <div class="stage-container">
+                <img id="displayImage" width="480" height="360" />
+                <div id="noSourceMessage" class="no-source-message">No source selected.<br><br>Choose a screen, window, or camera from the dropdown above.</div>
+            </div>
+            
+            <div class="variables-section">
+                <div class="variables-header">
+                    <h3>Variables</h3>
+                    <button id="newVariableBtn" class="btn-new-variable">+ New</button>
+                </div>
+                
+                <div class="variables-table-container">
+                    <table id="variablesTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Value</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="variablesTableBody">
+                            <tr class="no-variables">
+                                <td colspan="4">No variables defined. Click "+ New" to create one.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Variable Creation Modal -->
+    <div id="variableModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>New Variable</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="variableName">Name:</label>
+                    <input type="text" id="variableName" placeholder="Enter variable name" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelVariableBtn" class="btn-cancel">Cancel</button>
+                <button id="createVariableBtn" class="btn-create">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="settings-modal">
+        <div class="settings-modal-content">
+            <div class="settings-header">
+                <h2>Settings</h2>
+                <button class="settings-close">×</button>
+            </div>
+            <div class="settings-body">
+                <div class="settings-sidebar">
+                    <button class="settings-category-btn active" data-category="theme">Colour Theme</button>
+                    <button class="settings-category-btn" data-category="blocks">Block Colour</button>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-panel active" data-panel="theme">
+                        <h3>Colour Theme</h3>
+                        <div class="settings-options">
+                            <button id="settingsLight" class="settings-option-btn">
+                                <strong>Light Mode</strong>
+                            </button>
+                            <button id="settingsDark" class="settings-option-btn">
+                                <strong>Dark Mode</strong>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="settings-panel" data-panel="blocks">
+                        <h3>Block Colour</h3>
+                        <div class="settings-options">
+                            <button id="blockColourOriginal" class="settings-option-btn">
+                                <strong>Original</strong>
+                            </button>
+                            <button id="blockColourHighContrast" class="settings-option-btn">
+                                <strong>High Contrast</strong>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toolbox definition -->
+    <xml id="toolbox" style="display: none"></xml>
+
+    <!-- Plugins Modal -->
+    <div id="pluginsModal" class="modal">
+        <div class="modal-content plugins-modal">
+            <div class="modal-header">
+                <h2>Plugin Categories</h2>
+                <button class="modal-close" id="pluginsModalClose">×</button>
+            </div>
+            <div class="modal-body">
+                <p class="plugins-description">Select plugin categories to add to your workspace. Plugin categories extend the basic functionality with additional blocks.</p>
+                <div id="pluginsList" class="plugins-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Console Panel -->
+    <div id="consolePanel" class="console-panel">
+        <div class="console-header">
+            <span>Console Output</span>
+            <div class="console-filters">
+                <button class="console-filter-btn active" data-filter="all">All</button>
+                <button class="console-filter-btn" data-filter="log">Log</button>
+                <button class="console-filter-btn" data-filter="warning">Warning</button>
+                <button class="console-filter-btn" data-filter="error">Error</button>
+            </div>
+            <button id="clearConsole" class="console-btn">Clear</button>
+            <button id="closeConsole" class="console-btn">✕</button>
+        </div>
+        <div id="consoleOutput" class="console-output"></div>
+    </div>
+
+    <!-- Console Toggle Button -->
+    <button id="toggleConsole" class="console-toggle-btn">📋 Console</button>
+
+    <script src="/Macro/script.js"></script>
+</body>
+</html>

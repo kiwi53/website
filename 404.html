@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // GitHub Pages 404 handler for client-side routing
+        (function() {
+            const path = window.location.pathname;
+            const pathSegments = path.split('/').filter(s => s);
+            const repoName = pathSegments[0] || ''; // Gets repo name from URL (e.g., "website")
+            
+            // Define route mappings relative to the base path
+            const routes = {
+                '/macro': '/Macro/index.html',
+                '/macro/': '/Macro/index.html',
+                '/game-launcher': '/Game Launcher/game-launcher.html',
+                '/game-launcher/': '/Game Launcher/game-launcher.html',
+                '/malware': '/Malware/malware.html',
+                '/malware/': '/Malware/malware.html',
+                '': '/index.html',
+                '/': '/index.html'
+            };
+            
+            // Get the path after the repo name
+            let relativePath = '';
+            if (pathSegments.length > 1) {
+                relativePath = '/' + pathSegments.slice(1).join('/');
+            } else if (pathSegments.length === 1) {
+                relativePath = '';
+            }
+            
+            // Check if we have a route for this relative path
+            if (routes.hasOwnProperty(relativePath)) {
+                const newPath = '/' + repoName + routes[relativePath];
+                window.location.replace(newPath);
+            } else {
+                // If no route found, try to display a helpful 404 page
+                document.write(`
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>404 - Page Not Found</title>
+                        <style>
+                            body {
+                                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                min-height: 100vh;
+                                margin: 0;
+                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                color: white;
+                            }
+                            .error-container {
+                                text-align: center;
+                                padding: 2rem;
+                            }
+                            h1 {
+                                font-size: 6rem;
+                                margin: 0;
+                            }
+                            p {
+                                font-size: 1.5rem;
+                                margin: 1rem 0;
+                            }
+                            a {
+                                color: white;
+                                text-decoration: none;
+                                padding: 1rem 2rem;
+                                background: rgba(255, 255, 255, 0.2);
+                                border-radius: 8px;
+                                display: inline-block;
+                                margin-top: 1rem;
+                                transition: background 0.3s;
+                            }
+                            a:hover {
+                                background: rgba(255, 255, 255, 0.3);
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="error-container">
+                            <h1>404</h1>
+                            <p>Page not found</p>
+                            <p>The page you're looking for doesn't exist.</p>
+                            <a href="/${repoName}/index.html">Go Home</a>
+                        </div>
+                    </body>
+                    </html>
+                `);
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div style="text-align: center; padding: 2rem; font-family: sans-serif;">
+        <p>Redirecting...</p>
+    </div>
+</body>
+</html>

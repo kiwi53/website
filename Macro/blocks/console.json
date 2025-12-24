@@ -1,0 +1,58 @@
+{
+  "name": "console",
+  "colour": "#5E6472",
+  "state": "default",
+  "blocks": [
+
+
+    {
+      "name": "output",
+      "message0": "output %1 to console as a %2",
+      "args0": [
+        {"name": "message", "value": "Hello World!", "argType": "value", "input": "text"},
+        {"name": "type", "options": ["log", "⚠️ warning", "❌ error"], "argType": "dropdown"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "output_colour",
+      "message0": "output %1 to console in colour %2",
+      "args0": [
+        {"name": "message", "value": "Hello World!", "argType": "value", "input": "text"},
+        {"name": "colour", "options": ["🟥 red", "🟧 orange", "🟨 yellow", "🟩 green", "🟦 blue", "🟪 purple", "🟫 brown", "⬛ black", "⬜ white"], "argType": "dropdown"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "output_icon",
+      "message0": "output %1 to console with icon %2",
+      "args0": [
+        {"name": "message", "value": "Hello World!", "argType": "value", "input": "text"},
+        {"name": "icon", "options": ["▸ bullet point", "• bullet point 2", "* asterics", "✨ sparkles", "✅ check mark", "💥 collision", "💬 speech"], "argType": "dropdown"}
+      ],
+      "shape": "middle"
+    },
+
+    
+    {
+      "name": "output_colour_icon",
+      "message0": "output %1 to console in colour %2 with icon %3",
+      "args0": [
+        {"name": "message", "value": "Hello World!", "argType": "value", "input": "text"},
+        {"name": "colour", "options": ["🟥 red", "🟧 orange", "🟨 yellow", "🟩 green", "🟦 blue", "🟪 violet", "🟫 brown", "⬛ black", "⬜ white"], "argType": "dropdown"},
+        {"name": "icon", "options": ["▸ bullet point", "• bullet point 2", "* asterics", "✨ sparkles", "✅ check mark", "💥 collision", "💬 speech"], "argType": "dropdown"}
+      ],
+      "shape": "middle"
+    }
+
+
+    
+
+
+
+  ]
+}

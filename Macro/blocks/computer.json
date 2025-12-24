@@ -1,0 +1,21 @@
+{
+  "name": "computer",
+  "colour": "#5E6472",
+  "state": "plugin",
+  "blocks": [
+
+
+    {"name": "set_volume",
+      "message0": "set volume to %1",
+      "args0": [{"name": "volume", "value": 25, "argType": "value", "input": "number"}],
+      "shape": "middle"},
+
+    {"name": "change_volume",
+      "message0": "change volume by %1",
+      "args0": [{"name": "volume", "value": 5, "argType": "value", "input": "number"}],
+      "shape": "middle"}
+
+
+
+  ]
+}

@@ -1,0 +1,14 @@
+{
+    "name": "chatrooms",
+    "description": "Create or join chat rooms and share messages and files with others in real-time.",
+    "thumbnail": "",
+    "version": "1.0.0",
+    "state": "released",
+    "developer": "keeyweey",
+    "release_date": "21/12/2025",
+    "catagories": {
+        "singleplayer": false,
+        "multiplayer": true,
+        "retro": false
+    }
+}

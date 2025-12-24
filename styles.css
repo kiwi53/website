@@ -1,0 +1,611 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header & Navigation */
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #3498db;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease 0.2s;
+    animation-fill-mode: both;
+}
+
+.cta-button {
+    background: white;
+    color: #667eea;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 1s ease 0.4s;
+    animation-fill-mode: both;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* CTA group */
+.cta-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Main menu cards */
+.menu-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 920px;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: left;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.03);
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.menu-card:disabled,
+.menu-card[aria-disabled="true"] { opacity: 0.6; cursor: default }
+
+.menu-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.12) }
+.menu-card:focus { outline: 3px solid rgba(102,126,234,0.14) }
+
+.menu-card .card-title { font-weight:800; color:#2c3e50; font-size:1.1rem }
+.menu-card .card-desc { color:#666; font-size:0.95rem; margin-top: 6px }
+
+/* About Section */
+.about {
+    padding: 5rem 0;
+    background: #f8f9fa;
+}
+
+.about h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+.about p {
+    text-align: center;
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #555;
+}
+
+/* Services Section */
+.services {
+    padding: 5rem 0;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+}
+
+/* Launcher title spacing and button */
+.launcher-title { margin-top: 1.25rem; margin-bottom: 0.5rem; text-align: center }
+.launcher-controls { display:flex; justify-content:center; margin-bottom: 0.75rem }
+.btn { display:inline-block; padding:8px 14px; border-radius:8px; text-decoration:none; font-weight:700 }
+.btn-secondary { background:#f1f6ff; color:#2c3e50; border:1px solid #dfeeff }
+.btn-secondary:hover { background:#e6f0ff }
+
+.service-grid {
+    display: grid;
+    /* increase min size to enlarge cards and allow denser packing (stable at 240px) */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    /* Allow filling of holes so cards will move up into earlier rows when space exists */
+    grid-auto-flow: dense;
+    align-items: start;
+    justify-content: center;
+}
+
+/* Fullscreen player styles */
+.player.fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.95);
+    padding: 18px;
+    border-radius: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.player.fullscreen .player-toolbar {
+    align-items: center;
+    gap: 12px;
+}
+
+.player.fullscreen .player-title { color: #fff }
+.player.fullscreen .open-new { color: #fff }
+.player.fullscreen #closePlayer { color: #fff }
+
+.player.fullscreen #gameFrame {
+    flex: 1 1 auto;
+    width: 100%;
+    height: calc(100vh - 64px);
+    border-radius: 8px;
+}
+
+.return-launcher {
+    margin-left: auto;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* When a player is open, prevent scrolling */
+.body-player-open { overflow: hidden; height: 100vh; }
+
+@media (max-width: 900px) {
+    .service-grid { gap: 0.75rem; }
+    .player.fullscreen #gameFrame { height: calc(100vh - 72px); }
+}
+
+.service-card {
+    background: white;
+    padding: 0.8rem 0.8rem 1.2rem 0.8rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative; /* for absolute-positioned controls */
+    width: 100%; /* ensure card fills its grid column uniformly */
+    max-width: 320px;   /* prevents huge growth when columns drop */
+    margin: 0 auto;
+}
+
+/* WIP (Work in Progress) card styling */
+.service-card.wip {
+    opacity: 0.6;
+    filter: grayscale(70%);
+}
+
+.service-card.wip::after {
+    content: 'Under Construction';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 152, 0, 0.95);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Card header with title and menu button */
+.card-header { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.card-header h3 { margin:0; font-size:1.25rem; line-height:1.2; }
+
+/* Card menu button (three-line icon) */
+.card-menu {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(102,126,234,0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.card-menu svg { display: block; }
+.card-menu:focus { outline: 2px solid #667eea; }
+
+/* Info panel (right drawer) */
+.info-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 360px;
+    max-width: 95%;
+    background: #fff;
+    box-shadow: -12px 0 40px rgba(0,0,0,0.15);
+    transform: translateX(100%);
+    transition: transform 0.28s ease;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+}
+.info-panel.open { transform: translateX(0); }
+.info-panel.hidden { display: none; }
+.info-panel-header { display:flex; align-items:center; gap:8px; }
+.info-panel-header h3 { margin:0; font-size:1.1rem; color:#2c3e50; }
+.info-panel-header button { margin-left:auto; border:none; background:transparent; font-size:1.1rem; cursor:pointer }
+.info-panel-body { margin-top:12px; overflow:auto; }
+.panel-thumb { width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:12px }
+.panel-thumb.hidden { display:none }
+
+/* Placeholder for panel thumb when no image is provided */
+.panel-thumb.placeholder { display:flex; align-items:center; justify-content:center; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color: #fff; font-weight:700; height:160px; margin-bottom:12px; border-radius:8px; text-align:center; padding:12px }
+.panel-thumb.placeholder.hidden { display:none }
+.panel-cats { display:flex; gap:6px; flex-wrap:wrap; margin:8px 0; }
+.panel-cats .pill{ background:#e6f0ff; color:#2c3e50; padding:6px 8px; border-radius:8px; font-size:0.85rem }
+
+/* Metadata spacing: keep categories after metadata and add gap after description */
+.panel-meta { margin-top: 16px; display:flex; flex-direction:column; gap:6px; color:#444; font-size:0.95rem }
+#panelDescription { margin-bottom: 12px; font-size: 0.9rem; line-height: 1.4; }
+
+.panel-actions { display:flex; gap:8px; margin-top:12px; justify-content:center; }
+.panel-actions .button{ padding:8px 12px; border-radius:8px; border:none; color:#fff; text-decoration:none; cursor:pointer }
+.panel-actions .button[role="link"]{ display:inline-block }
+
+
+.panel-actions .play-button{ background:#28a745; width:66.66666666666666666666666666666%; max-width:100%; display:block; margin:0 auto; }
+.panel-actions .play-button:hover{ background:#218838 }
+
+@media (max-width: 900px) {
+    .info-panel { width: 100%; }
+}
+
+.service-card h3 {
+    color: #667eea;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.service-card { padding: 1rem; }
+
+.service-card .game-thumb {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 0.75rem;
+}
+
+.service-card .game-thumb.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    height: 200px;
+    border-radius: 8px;
+    margin-top: 0.75rem;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.service-card h3 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.service-card p {
+    color: #666;
+}
+
+/* Contact Section */
+.contact {
+    padding: 5rem 0;
+    background: #f8f9fa;
+}
+
+.contact h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.contact-form button {
+    background: #667eea;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-form button:hover {
+    background: #764ba2;
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Game Launcher Layout */
+.game-launcher-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.sidebar {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+#game-search {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #e6e9ee;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.categories h4 {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+#category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#category-list li {
+    padding: 0.5rem 0.25rem;
+    cursor: pointer;
+    border-radius: 6px;
+    color: #667eea;
+}
+
+#category-list li:hover,
+#category-list li.active {
+    background: #f1f6ff;
+}
+
+/* Selected categories UI */
+.selected-cats {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+}
+.selected-cats .pill {
+    background: #667eea;
+    color: white;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+}
+.selected-cats .pill .remove {
+    margin-left: 0.5rem;
+    opacity: 0.9;
+    font-weight: bold;
+}
+#category-list li.selected {
+    background: #e6f0ff;
+    border: 1px solid #d0e6ff;
+}
+
+/* Game launcher: two-column area (games list + embedded player) */
+.games-area {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.game-launcher-container .games-area .service-grid {
+    width: 100%;
+    max-width: none;
+    flex: 1 1 auto;
+}
+
+/* Embedded player */
+.player {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.player.hidden { display: none; }
+
+.player-toolbar { display:flex; gap:8px; align-items:center; padding:4px 4px 8px 4px; }
+.player-toolbar #closePlayer { background:transparent; border:none; font-size:1.15rem; cursor:pointer }
+.player-title { font-weight:700; color:#2c3e50 }
+.open-new { margin-left:auto; text-decoration:none; color:#667eea; font-weight:600 }
+
+#gameFrame { width:100%; height:620px; border-radius:8px; border: none; background: #000; }
+
+@media (max-width: 900px) {
+    .game-launcher-container .games-area { flex-direction: column; }
+    #gameFrame { height:480px; }
+}
+
+#no-results {
+    text-align: center;
+    color: #777;
+    margin-top: 1rem;
+}
+
+/* When no games are found, ensure message spans full width and is centered in games area */
+.games-area #no-results,
+.games-area #loading {
+    flex: 1 1 100%;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .game-launcher-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Helpers */
+.hidden { display: none; }
+#loading { text-align: center; color: #777; margin-top: 1rem; }
+

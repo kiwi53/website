@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong - Multiplayer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="pongCanvas" width="800" height="600"></canvas>
+        
+        <div id="menu" class="menu">
+            <h1>PONG</h1>
+            <p class="subtitle">Classic Single Player Game</p>
+            <button id="startBtn" class="menu-btn">Start Game</button>
+            <div class="controls-info">
+                <div class="player-controls">
+                    <h3>Controls</h3>
+                    <p>W or ↑ - Move Up</p>
+                    <p>S or ↓ - Move Down</p>
+                    <p>Mouse - Move Paddle</p>
+                </div>
+                <div class="player-controls">
+                    <h3>Game Info</h3>
+                    <p>Play against AI</p>
+                    <p>First to 5 wins!</p>
+                    <p>ESC - Pause</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameOver" class="menu hidden">
+            <h1>GAME OVER</h1>
+            <p id="winner" class="winner"></p>
+            <button id="restartBtn" class="menu-btn">Play Again</button>
+            <button id="menuBtn" class="menu-btn">Main Menu</button>
+        </div>
+
+        <div id="pauseMenu" class="menu hidden">
+            <h1>PAUSED</h1>
+            <button id="resumeBtn" class="menu-btn">Resume</button>
+            <button id="quitBtn" class="menu-btn">Quit to Menu</button>
+        </div>
+
+        <div id="hud" class="hud hidden">
+            <div class="score">
+                <span class="player-name">Player</span>
+                <span id="score1" class="score-value">0</span>
+            </div>
+            <div class="center-text">
+                <span id="countdownText"></span>
+            </div>
+            <div class="score">
+                <span id="score2" class="score-value">0</span>
+                <span class="player-name">AI</span>
+            </div>
+        </div>
+
+        <div id="pauseHint" class="pause-hint hidden">Press ESC to Pause</div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

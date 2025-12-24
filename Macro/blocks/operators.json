@@ -1,0 +1,130 @@
+{
+  "name": "operators",
+  "colour": "#478978",
+  "state": "default",
+  "blocks": [
+
+    {
+      "name": "value",
+      "message0": "%1 %2 %3",
+      "args0": [
+        {"name": "value1", "value": 1, "argType": "value", "input": "numbers"},
+        {"name": "operator", "options": ["+", "-", "*", "/", "mod", "OR", "AND", "XOR", "NAND", "NOR"], "argType": "dropdown"},
+        {"name": "value2", "value": 1, "argType": "value", "input": "numbers"}
+      ],
+      "shape": "value"
+    },
+
+
+    {
+      "name": "=_!=",
+      "message0": "%1 %2 %3",
+      "args0": [
+        {"name": "value1", "value": 1, "argType": "value", "input": "numbers"},
+        {"name": "operator", "options": ["=", "!="], "argType": "dropdown"},
+        {"name": "value2", "value": 1, "argType": "value", "input": "numbers"}
+      ],
+      "shape": "boolean"
+    },
+
+
+    {
+      "name": "bitwise_boolean",
+      "message0": "%1 %2 %3",
+      "args0": [
+        {"name": "boolean1", "value": "True", "argType": "boolean", "input": "none"},
+        {"name": "operator", "options": ["=", "!=", "OR", "AND", "XOR", "NAND", "NOR"], "argType": "dropdown"},
+        {"name": "boolean2", "value": "False", "argType": "boolean", "input": "none"}
+      ],
+      "shape": "boolean"
+    },
+
+
+    {
+      "name": "boolean",
+      "message0": "%1",
+      "args0": [{"name": "state", "options": ["True", "False"], "argType": "dropdown"}],
+      "shape": "boolean"
+    },
+
+
+    {
+      "name": "not_boolean",
+      "message0": "not %1",
+      "args0": [{"name": "boolean", "value": "True", "argType": "boolean", "input": "none"}],
+      "shape": "boolean"
+    },
+
+
+
+    {
+      "name": "not_value",
+      "message0": "not %1",
+      "args0": [{"name": "value", "value": 1, "argType": "value", "input": "number"}],
+      "shape": "value"
+    },
+
+
+    {
+      "name": "stuff",
+      "message0": "%1 of %2",
+      "args0": [
+        {"name": "operator", "options": ["round", "abs", "floor", "ceiling", "sqrt", "sin", "cos", "tan", "asin", "acos", "atan", "In", "log", "e^", "10^"], "argType": "dropdown"},
+        {"name": "value", "value": 0, "argType": "value", "input": "number"}],
+      "shape": "value"
+    },
+
+
+    {
+      "name": "random",
+      "message0": "pick random from %1 of %2",
+      "args0": [
+        {"name": "value1", "value": 0, "argType": "value", "input": "number"},
+        {"name": "value2", "value": 0, "argType": "value", "input": "number"}],
+      "shape": "value"
+    },
+
+
+    {
+      "name": "join",
+      "message0": "join %1 and %2",
+      "args0": [
+        {"name": "text1", "value": "apple", "argType": "value", "input": "text"},
+        {"name": "text2", "value": "banana", "argType": "value", "input": "text"}],
+      "shape": "value"
+    },
+
+
+    {
+      "name": "letter",
+      "message0": "letter %1 of %2",
+      "args0": [
+        {"name": "position", "value": 1, "argType": "value", "input": "number"},
+        {"name": "text", "value": "apple", "argType": "value", "input": "text"}],
+      "shape": "value"
+    },
+
+
+    {
+      "name": "length",
+      "message0": "length of %1",
+      "args0": [{"name": "text", "value": "Hello World!", "argType": "value", "input": "text"}],
+      "shape": "value"
+    },
+
+
+    {
+      "name": "contain",
+      "message0": "%1 contains %2 ?",
+      "args0": [
+        {"name": "text", "value": "Hello World!", "argType": "value", "input": "text"},
+        {"name": "contains", "value": "Hello World!", "argType": "value", "input": "text"}],
+      "shape": "boolean"
+    }
+
+
+    
+
+
+  ]
+}

@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    background: #1a1a1a;
+    color: white;
+}
+
+#gameContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameCanvas {
+    display: block;
+    background: #2d2d2d;
+    border: 3px solid #444;
+    cursor: pointer;
+}
+
+#gameUI {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.ui-top {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+    pointer-events: none;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.label {
+    color: #aaa;
+}
+
+.value {
+    color: #4CAF50;
+    min-width: 60px;
+}
+
+.tower-menu {
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #444;
+    pointer-events: all;
+    width: 200px;
+}
+
+.tower-menu h3 {
+    margin-bottom: 10px;
+    color: #4CAF50;
+    text-align: center;
+}
+
+.tower-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tower-btn {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+    font-size: 12px;
+}
+
+.tower-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #4CAF50;
+    transform: translateX(5px);
+}
+
+.tower-btn.selected {
+    background: rgba(76, 175, 80, 0.3);
+    border-color: #4CAF50;
+}
+
+.tower-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.tower-icon {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto 5px;
+    border-radius: 50%;
+}
+
+.basic-tower {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+}
+
+.rapid-tower {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+}
+
+.sniper-tower {
+    background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+}
+
+.splash-tower {
+    background: linear-gradient(135deg, #f44336, #c62828);
+}
+
+.tower-name {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.tower-cost {
+    color: #FFD700;
+    margin-bottom: 3px;
+}
+
+.tower-info {
+    font-size: 10px;
+    color: #aaa;
+    line-height: 1.4;
+}
+
+.start-wave-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 40px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: white;
+    background: #4CAF50;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 20;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.start-wave-btn:hover {
+    background: #45a049;
+    transform: translateX(-50%) scale(1.05);
+}
+
+.start-wave-btn.hidden {
+    display: none;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 100;
+    text-align: center;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+.screen h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    color: #4CAF50;
+    text-shadow: 3px 3px 10px rgba(76, 175, 80, 0.5);
+}
+
+.screen p {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #ccc;
+}
+
+.controls-info {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    max-width: 500px;
+}
+
+.controls-info h3 {
+    margin-bottom: 15px;
+    color: #4CAF50;
+}
+
+.controls-info p {
+    margin: 8px 0;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+.btn {
+    padding: 15px 50px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    background: #4CAF50;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(76, 175, 80, 0.5);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}

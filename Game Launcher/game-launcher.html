@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Launcher</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="../logo.png" alt="Logo"></div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about" style="padding-top:6rem;">
+            <div class="container">
+                <h2 class="launcher-title">Game Launcher</h2>
+                <div class="launcher-controls" style="margin-bottom:1rem;">
+                    <a class="btn btn-secondary" href="../index.html">← Back to Main Menu</a>
+                </div>
+
+                <div class="game-launcher-container" style="margin-top:1.5rem;">
+                    <aside class="sidebar">
+                        <input id="game-search" type="search" placeholder="Search games..." aria-label="Search games">
+                        <div class="categories">
+                            <h4>Categories</h4>
+                            <div id="selected-categories" class="selected-cats hidden" aria-live="polite"></div>
+                            <ul id="category-list"></ul>
+                        </div>
+                    </aside>
+                    <div class="games-area">
+                        <div class="service-grid" id="games-grid" aria-live="polite"></div>
+
+                        <!-- Embedded player to run the selected game -->
+                        <div id="player" class="player hidden" aria-live="polite">
+                            <div class="player-toolbar">
+                                <button id="closePlayer" aria-label="Close game">✕</button>
+                                <div id="playerTitle" class="player-title">Game</div>
+                                <a id="openNewTab" class="open-new" href="#" target="_blank" rel="noopener">Open in new tab ↗</a>
+                                <button id="returnLauncher" class="return-launcher" aria-label="Return to launcher">Return to Launcher</button>
+                            </div>
+                            <iframe id="gameFrame" src="" sandbox="allow-scripts allow-forms allow-same-origin" title="Game player"></iframe>
+                        </div>
+
+                        <p id="loading">Loading games...</p>
+                        <p id="no-results" class="hidden">No games found.</p>
+                    </div>
+
+                    <div id="infoPanel" class="info-panel hidden" aria-hidden="true" role="dialog" aria-label="Game details">
+                        <div class="info-panel-header">
+                            <h3 id="panelTitle">Game Title</h3>
+                            <button id="closeInfoPanel" aria-label="Close details">✕</button>
+                        </div>
+                        <div class="info-panel-body">
+                            <img id="panelThumb" src="" alt="" class="panel-thumb hidden">
+                            <div id="panelThumbPlaceholder" class="panel-thumb placeholder hidden" role="img" aria-hidden="true"></div>
+                            <p id="panelDescription"></p>
+                            <!-- Game metadata -->
+                            <div class="panel-meta">
+                                <div class="meta-row"><strong>Developer:</strong> <span id="panelDeveloper">—</span></div>
+                                <div class="meta-row"><strong>Version:</strong> <span id="panelVersion">—</span></div>
+                                <div class="meta-row"><strong>Release Date:</strong> <span id="panelReleaseDate">—</span></div>
+                                <div class="meta-row"><strong>State:</strong> <span id="panelState">—</span></div>
+                            </div>
+
+                            <div id="panelCategories" class="panel-cats"></div>
+
+                            <div class="panel-actions">
+                                <button id="panelPlay" class="button play-button">Play</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align:center;margin-top:1.25rem;"><a href="../index.html">← Back to Home</a></p>
+            </div>
+        </section>
+    </main>
+    <script src="/Game Launcher/game-launcher.js"></script>
+
+    <footer>
+        <p>&copy; 2025 MyWebsite. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

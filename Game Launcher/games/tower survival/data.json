@@ -1,0 +1,14 @@
+{
+    "name": "Tower Defence",
+    "description": "Build towers to defend against waves of enemies! Strategic tower placement is key.",
+    "thumbnail": "",
+    "version": "1.0.0",
+    "state": "WIP",
+    "developer": "keeyweey",
+    "release_date": "21/12/2025",
+    "catagories": {
+        "singleplayer": true,
+        "multiplayer": false,
+        "retro": false
+    }
+}

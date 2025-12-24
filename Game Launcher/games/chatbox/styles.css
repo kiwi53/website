@@ -1,0 +1,544 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+/* Cards */
+.welcome-card,
+.join-card,
+.room-created-card,
+.rooms-card,
+.create-room-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.rooms-card {
+    max-width: 700px;
+}
+
+.create-room-card {
+    max-width: 450px;
+}
+
+h1, h2 {
+    margin-bottom: 10px;
+    color: #667eea;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Input Sections */
+.name-input-section,
+.code-input-section {
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #555;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.primary-btn {
+    background: #667eea;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.secondary-btn {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.secondary-btn:hover {
+    background: #d0d0d0;
+}
+
+/* Room Code Display */
+.room-code-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.code-box {
+    background: #f5f5f5;
+    border: 3px dashed #667eea;
+    border-radius: 10px;
+    padding: 20px 40px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #667eea;
+    letter-spacing: 5px;
+}
+
+.copy-btn {
+    background: #667eea;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+.copy-btn:hover {
+    background: #5568d3;
+}
+
+.info-text {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 30px;
+}
+
+/* Chat Room */
+.chat-container {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.chat-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.room-info h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: white;
+}
+
+.online-status {
+    font-size: 0.9em;
+    opacity: 0.9;
+    margin-top: 5px;
+}
+
+.leave-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.leave-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Messages */
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+.message {
+    margin-bottom: 15px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.message-sender {
+    font-weight: 600;
+    color: #667eea;
+}
+
+.message-time {
+    font-size: 0.8em;
+    color: #999;
+}
+
+.message-content {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.message.own .message-content {
+    background: #667eea;
+    color: white;
+    margin-left: auto;
+}
+
+.message.own .message-sender {
+    color: #764ba2;
+}
+
+.message-media {
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.message-media img,
+.message-media video {
+    max-width: 100%;
+    max-height: 300px;
+    display: block;
+    border-radius: 10px;
+}
+
+.system-message {
+    text-align: center;
+    color: #999;
+    font-size: 0.9em;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+/* Input Area */
+.input-area {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.attach-btn {
+    background: #f0f0f0;
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+.attach-btn:hover {
+    background: #e0e0e0;
+}
+
+#messageInput {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1em;
+}
+
+.send-btn {
+    background: #667eea;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+}
+
+.send-btn:hover {
+    background: #5568d3;
+}
+
+/* Media Preview */
+.media-preview {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+}
+
+.media-preview.hidden {
+    display: none;
+}
+
+.preview-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview-item {
+    max-width: 200px;
+    max-height: 150px;
+    border-radius: 10px;
+}
+
+.preview-item.hidden {
+    display: none;
+}
+
+.cancel-preview {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.5em;
+    line-height: 1;
+    padding: 0;
+}
+
+.cancel-preview:hover {
+    background: #ee5a6f;
+}
+
+.cancel-preview:hover {
+    background: #ee5a6f;
+}
+
+/* Rooms Table */
+.rooms-table-container {
+    margin: 20px 0;
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+}
+
+.rooms-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.rooms-table thead {
+    background: #667eea;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+.rooms-table th,
+.rooms-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.rooms-table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.5px;
+}
+
+.rooms-table tbody tr {
+    transition: background 0.2s;
+}
+
+.rooms-table tbody tr:hover:not(.no-rooms) {
+    background: #f8f9fa;
+}
+
+.rooms-table .no-rooms td {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 30px;
+}
+
+.join-room-btn {
+    background: #667eea;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9em;
+}
+
+.join-room-btn:hover {
+    background: #5568d3;
+}
+
+.room-protected {
+    color: #f39c12;
+    font-size: 1.2em;
+}
+.owner-badge {
+    color: #f1c40f;
+    font-size: 1em;
+    margin-left: 5px;
+}
+
+.delete-room-btn {
+    padding: 8px 12px;
+    margin-left: 5px;
+    background: #e74c3c;
+    color: white;
+    font-size: 0.9em;
+}
+
+.delete-room-btn:hover {
+    background: #c0392b;
+    transform: translateY(-1px);
+}
+/* Room Settings */
+.room-settings {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.setting-item {
+    margin-bottom: 15px;
+}
+
+.setting-item label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.setting-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.password-section {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.password-section.hidden {
+    display: none;
+}
+
+.password-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.password-section input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1em;
+}
+
+.password-section input[type="password"]:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* Scrollbar */
+.messages-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+    background: #5568d3;
+}

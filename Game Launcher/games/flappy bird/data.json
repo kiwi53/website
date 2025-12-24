@@ -1,0 +1,14 @@
+{
+    "name": "flappy bird",
+    "description": "The game features a bird character named Faby, which the player controls by tapping the screen to make the bird flap upward, navigating it through randomly positioned gaps between green pipes. The objective is to achieve the highest possible score by successfully passing through as many pipes as possible without colliding with them or the ground.",
+    "thumbnail": "image.png",
+    "version": "1.0.0",
+    "state": "released",
+    "developer": "keeyweey",
+    "release_date": "20/12/2025",
+    "catagories": {
+        "singleplayer": true,
+        "multiplayer": false,
+        "retro": true
+    }
+}

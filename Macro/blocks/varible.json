@@ -1,0 +1,39 @@
+{
+  "name": "variable",
+  "colour": "#5E6472",
+  "state": "default",
+  "blocks": [
+
+    {
+      "name": "set",
+      "message0": "set %1 to %2",
+      "args0": [
+        {"name": "varible", "options": "varible", "argType": "dropdown"},
+        {"name": "value", "value": 1, "argType": "value", "input": "text"}
+      ],
+      "shape": "middle"
+    },
+
+    {
+      "name": "change",
+      "message0": "change %1 by %2",
+      "args0": [
+        {"name": "varible", "options": "varible", "argType": "dropdown"},
+        {"name": "value", "value": 1, "argType": "value", "input": "numbers"}
+      ],
+      "shape": "middle"
+    },
+
+
+    {
+      "name": "varible",
+      "message0": "%1",
+      "args0": [
+        {"name": "varible", "options": "varible-V", "argType": "dropdown"}
+      ],
+      "shape": "value"
+    }
+
+
+  ]
+}

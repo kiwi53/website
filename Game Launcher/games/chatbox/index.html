@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBox</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Name Entry Screen -->
+    <div id="nameScreen" class="screen">
+        <div class="welcome-card">
+            <h1>🗨️ ChatBox</h1>
+            <p class="subtitle">Enter your name to continue</p>
+            
+            <div class="name-input-section">
+                <label for="userName">Your name:</label>
+                <input type="text" id="userName" placeholder="Enter your name" maxlength="20">
+            </div>
+
+            <div class="button-group">
+                <button id="continueBtn" class="primary-btn">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rooms List Screen -->
+    <div id="roomsScreen" class="screen hidden">
+        <div class="rooms-card">
+            <h2>Available Rooms</h2>
+            <p class="subtitle">Join a room or create your own</p>
+            
+            <div class="rooms-table-container">
+                <table class="rooms-table">
+                    <thead>
+                        <tr>
+                            <th>Room Name</th>
+                            <th>Users</th>
+                            <th>Protected</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="roomsTableBody">
+                        <tr class="no-rooms">
+                            <td colspan="4">No rooms available. Create one!</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="button-group">
+                <button id="createRoomBtn" class="primary-btn">Create New Room</button>
+                <button id="joinWithCodeBtn" class="secondary-btn">Join with Code</button>
+                <button id="refreshRoomsBtn" class="secondary-btn">🔄 Refresh</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Room Screen -->
+    <div id="createRoomScreen" class="screen hidden">
+        <div class="create-room-card">
+            <h2>Create a Room</h2>
+            <p class="subtitle">Set up your chat room</p>
+            
+            <div class="room-settings">
+                <div class="name-input-section">
+                    <label for="roomName">Room Name:</label>
+                    <input type="text" id="roomName" placeholder="Enter room name" maxlength="30">
+                </div>
+
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="hideFromPublicCheck">
+                        Hide from public list
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="passwordProtectCheck">
+                        Password protect this room
+                    </label>
+                </div>
+                
+                <div id="passwordSection" class="password-section hidden">
+                    <label for="roomPassword">Room Password:</label>
+                    <input type="password" id="roomPassword" placeholder="Enter password" maxlength="20">
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button id="createRoomSubmitBtn" class="primary-btn">Create Room</button>
+                <button id="backFromCreateBtn" class="secondary-btn">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Room Screen -->
+    <div id="joinScreen" class="screen hidden">
+        <div class="join-card">
+            <h2>Join Room</h2>
+            <p class="subtitle">Enter the room code and password if required</p>
+            
+            <div class="code-input-section">
+                <label>Room Code:</label>
+                <input type="text" id="roomCodeInput" placeholder="Enter room code" maxlength="6">
+            </div>
+
+            <div id="joinPasswordSection" class="password-section hidden">
+                <label for="joinPassword">Password:</label>
+                <input type="password" id="joinPassword" placeholder="Enter room password" maxlength="20">
+            </div>
+
+            <div class="button-group">
+                <button id="joinSubmitBtn" class="primary-btn">Join</button>
+                <button id="backFromJoinBtn" class="secondary-btn">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Room Created Screen -->
+    <div id="roomCreatedScreen" class="screen hidden">
+        <div class="room-created-card">
+            <h2>✅ Room Created!</h2>
+            <p class="subtitle">Share this code with others</p>
+            
+            <div class="room-code-display">
+                <div class="code-box" id="displayRoomCode">------</div>
+                <button id="copyCodeBtn" class="copy-btn" title="Copy code">📋</button>
+            </div>
+
+            <p class="info-text">Others can join using this code</p>
+
+            <button id="enterRoomBtn" class="primary-btn">Enter Room</button>
+        </div>
+    </div>
+
+    <!-- Chat Room Screen -->
+    <div id="chatScreen" class="screen hidden">
+        <div class="chat-container">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="room-info">
+                    <h3>Room: <span id="currentRoomCode">------</span></h3>
+                    <p class="online-status"><span id="onlineCount">1</span> online</p>
+                </div>
+                <button id="leaveRoomBtn" class="leave-btn">Leave Room</button>
+            </div>
+
+            <!-- Messages Area -->
+            <div class="messages-container" id="messagesContainer">
+                <div class="system-message">Welcome to the chat room!</div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <button id="attachBtn" class="attach-btn" title="Attach file">📎</button>
+                <input type="file" id="fileInput" accept="image/*,video/*" style="display: none;">
+                <input type="text" id="messageInput" placeholder="Type a message..." maxlength="500">
+                <button id="sendBtn" class="send-btn">Send</button>
+            </div>
+
+            <!-- Media Preview -->
+            <div id="mediaPreview" class="media-preview hidden">
+                <div class="preview-content">
+                    <img id="previewImage" class="preview-item hidden">
+                    <video id="previewVideo" class="preview-item hidden" controls></video>
+                    <button id="cancelPreviewBtn" class="cancel-preview">×</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

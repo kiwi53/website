@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="logo.png" alt="Logo"></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Website</h1>
+                <p>Description</p>
+                <div class="cta-group">
+                    <div class="menu-cards" id="main-cards">
+                        <button class="menu-card" data-target="game-launcher" data-href="game-launcher">
+                            <div class="card-title">Game Launcher</div>
+                            <div class="card-desc">Open the game selection and play</div>
+                        </button>
+                        <button class="menu-card" data-target="macro" data-href="macro">
+                            <div class="card-title">Macro</div>
+                            <div class="card-desc">Block-based programming</div>
+                        </button>
+                        <button class="menu-card" data-target="malware" data-href="malware" aria-disabled="true">
+                            <div class="card-title">Malware</div>
+                            <div class="card-desc">C2 payload generator</div>
+                        </button>
+                        <button class="menu-card" data-target="projects" aria-disabled="true">
+                            <div class="card-title">Projects</div>
+                            <div class="card-desc">View ongoing projects</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>This is the description for the About Us.</p>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <h3>Web Design</h3>
+                        <p>nice website design.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Development</h3>
+                        <p>Develop stuff.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Consulting</h3>
+                        <p>Expert guidance to help your business.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MyWebsite. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
