@@ -82,16 +82,6 @@
             </div>
         </section>
     </main>
-    <script>
-        // Clean up URL if redirected from 404 handler
-        if (window.history && window.history.replaceState) {
-            const originalPath = sessionStorage.getItem('originalPath');
-            if (originalPath) {
-                window.history.replaceState(null, '', originalPath);
-                sessionStorage.removeItem('originalPath');
-            }
-        }
-    </script>
     <script src="game-launcher.js"></script>
 
     <footer>

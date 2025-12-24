@@ -9,41 +9,51 @@
         (function() {
             const path = window.location.pathname;
             const pathSegments = path.split('/').filter(s => s);
-            const repoName = pathSegments[0] || ''; // Gets repo name from URL (e.g., "website")
             
-            // Define route mappings relative to the base path
-            const routes = {
-                '/macro': '/Macro/index.html',
-                '/macro/': '/Macro/index.html',
-                '/game-launcher': '/Game Launcher/game-launcher.html',
-                '/game-launcher/': '/Game Launcher/game-launcher.html',
-                '/malware': '/Malware/malware.html',
-                '/malware/': '/Malware/malware.html',
-                '': '/index.html',
-                '/': '/index.html',
-                '/index': '/index.html',
-                '/game-launcher.html': '/Game Launcher/game-launcher.html',
-                '/macro/index': '/Macro/index.html',
-                '/malware/malware': '/Malware/malware.html'
-            };
-            
-            // Get the path after the repo name
+            // Determine if we're on GitHub Pages (has repo name) or localhost
+            // On localhost: /game-launcher -> pathSegments = ['game-launcher']
+            // On GitHub: /website/game-launcher -> pathSegments = ['website', 'game-launcher']
+            let repoName = '';
             let relativePath = '';
-            if (pathSegments.length > 1) {
-                relativePath = '/' + pathSegments.slice(1).join('/');
-            } else if (pathSegments.length === 1) {
-                relativePath = '';
+            
+            // Check if first segment looks like a repo name (not a known route)
+            const knownRoutes = ['macro', 'game-launcher', 'malware', 'index.html'];
+            if (pathSegments.length > 0 && !knownRoutes.includes(pathSegments[0])) {
+                // Likely on GitHub Pages with repo name
+                repoName = pathSegments[0];
+                if (pathSegments.length > 1) {
+                    relativePath = '/' + pathSegments.slice(1).join('/');
+                } else {
+                    relativePath = '';
+                }
+            } else {
+                // On localhost or direct route
+                relativePath = pathSegments.length > 0 ? '/' + pathSegments.join('/') : '';
             }
             
+            // Define route mappings
+            const routes = {
+                'macro': '/macro/',
+                '/macro': '/macro/',
+                '/macro/': '/macro/',
+                'game-launcher': '/game-launcher/',
+                '/game-launcher': '/game-launcher/',
+                '/game-launcher/': '/game-launcher/',
+                'malware': '/malware/',
+                '/malware': '/malware/',
+                '/malware/': '/malware/',
+                '': '/index.html',
+                '/': '/index.html',
+                '/index': '/index.html'
+            };
+            
             // Check if we have a route for this relative path
-            if (routes.hasOwnProperty(relativePath)) {
-                const targetPath = routes[relativePath];
-                const fullPath = '/' + repoName + targetPath;
+            const targetPath = routes[relativePath];
+            if (targetPath) {
+                const fullPath = repoName ? '/' + repoName + targetPath : targetPath;
                 
-                // Store the original clean path for display
-                sessionStorage.setItem('originalPath', window.location.pathname);
-                
-                // Redirect to the actual file
+                // Simply redirect - don't try to preserve clean URL as it breaks relative paths
+                console.log('Redirecting from', window.location.pathname, 'to', fullPath);
                 window.location.replace(fullPath);
             } else {
                 // If no route found, try to display a helpful 404 page
