@@ -224,10 +224,10 @@
 
     function loadGames() {
         loading.classList.remove('hidden');
-        fetch('games.json')
+        fetch('/api/games')
             .then(r => r.json())
             .then(data => {
-                console.debug('games.json returned', (data || []).length, 'games', data);
+                console.debug('API /api/games returned', (data || []).length, 'games', data);
                 games = (data || []).map(g => {
                     g.categories = (g.categories || []).map(c => normalizeCat(c));
                     return g;

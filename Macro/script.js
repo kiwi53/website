@@ -1386,7 +1386,7 @@ async function loadBlocksFromJson(){
     for (const file of blockFiles) {
       try {
         const encodedFile = encodeURIComponent(file)
-        const response = await fetch(`/Macro/blocks/${encodedFile}`)
+        const response = await fetch(`blocks/${encodedFile}`)
         if (!response.ok) {
           console.warn(`Failed to load ${file}: ${response.status}`)
           continue
