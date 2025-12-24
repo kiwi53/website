@@ -222,12 +222,61 @@
         });
     }
 
-    function loadGames() {
+    async function loadGames() {
         loading.classList.remove('hidden');
-        fetch('/api/games')
-            .then(r => r.json())
-            .then(data => {
-                console.debug('API /api/games returned', (data || []).length, 'games', data);
+        
+        // Try API first (for local server), fallback to scanning games folder (for GitHub Pages)
+        try {
+            const apiResponse = await fetch('/api/games');
+            if (apiResponse.ok) {
+                const data = await apiResponse.json();
+                processGamesData(data);
+                return;
+            }
+        } catch (e) {
+            console.log('API not available, scanning games folder...');
+        }
+        
+        // Fallback: scan games folder and load data.json from each game
+        const gameNames = ['chatbox', 'flappy bird', 'pong', 'tower survival', 'zombi survival'];
+        const gamesData = [];
+        
+        for (const gameName of gameNames) {
+            try {
+                const dataResponse = await fetch(`games/${encodeURIComponent(gameName)}/data.json`);
+                if (dataResponse.ok) {
+                    const data = await dataResponse.json();
+                    const categories = [];
+                    const cats = data.categories || data.catagories || {};
+                    if (typeof cats === 'object' && !Array.isArray(cats)) {
+                        Object.keys(cats).forEach(key => {
+                            if (cats[key] === true) categories.push(key);
+                        });
+                    }
+                    
+                    gamesData.push({
+                        id: gameName,
+                        name: data.name || gameName,
+                        description: data.description || '',
+                        thumbnail: data.thumbnail || '',
+                        url: `games/${encodeURIComponent(gameName)}/index.html`,
+                        categories: categories,
+                        version: data.version,
+                        developer: data.developer,
+                        release_date: data.release_date,
+                        state: data.state || data.status || data.release_state
+                    });
+                }
+            } catch (e) {
+                console.warn(`Failed to load ${gameName}:`, e);
+            }
+        }
+        
+        processGamesData(gamesData);
+    }
+    
+    function processGamesData(data) {
+        console.debug('Loaded', (data || []).length, 'games', data);
                 games = (data || []).map(g => {
                     g.categories = (g.categories || []).map(c => normalizeCat(c));
                     return g;
@@ -270,11 +319,6 @@
                         closePlayerOverlay();
                     }
                 });
-            })
-            .catch(err => {
-                console.error('Failed to load games', err);
-                loading.textContent = 'Failed to load games.';
-            });
     }
 
     if (searchInput) {
