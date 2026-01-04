@@ -6,9 +6,5 @@
     "state": "WIP",
     "developer": "keeyweey",
     "release_date": "21/12/2025",
-    "catagories": {
-        "singleplayer": true,
-        "multiplayer": false,
-        "retro": false
-    }
+    "categories": ["singleplayer"]
 }
