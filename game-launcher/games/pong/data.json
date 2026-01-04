@@ -6,9 +6,5 @@
     "state": "released",
     "developer": "keeyweey",
     "release_date": "21/12/2025",
-    "catagories": {
-        "singleplayer": true,
-        "multiplayer": false,
-        "retro": true
-    }
+    "categories": ["singleplayer", "retro"]
 }

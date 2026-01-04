@@ -238,7 +238,7 @@
         }
         
         // Fallback: scan games folder and load data.json from each game
-        const gameNames = ['chatbox', 'flappy bird', 'pong', 'tower survival', 'zombi survival'];
+        const gameNames = ['chatbox', 'flappy-bird', 'pong', 'tower-survival', 'zombi-survival'];
         const gamesData = [];
         
         for (const gameName of gameNames) {
@@ -246,9 +246,11 @@
                 const dataResponse = await fetch(`games/${encodeURIComponent(gameName)}/data.json`);
                 if (dataResponse.ok) {
                     const data = await dataResponse.json();
-                    const categories = [];
+                    let categories = [];
                     const cats = data.categories || data.catagories || {};
-                    if (typeof cats === 'object' && !Array.isArray(cats)) {
+                    if (Array.isArray(cats)) {
+                        categories = cats;
+                    } else if (typeof cats === 'object') {
                         Object.keys(cats).forEach(key => {
                             if (cats[key] === true) categories.push(key);
                         });
