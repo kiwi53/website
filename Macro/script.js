@@ -1370,7 +1370,7 @@ async function loadBlocksFromJson(){
       'operators.json',
       'debug.json',
       'varible.json',
-      'web&apps.json',
+      'webapps.json',
       'console.json',
       'computer.json'
     ]
