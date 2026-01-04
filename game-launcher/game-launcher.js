@@ -163,7 +163,7 @@
                     if (!confirmed) return;
                 }
                 
-                const playerUrl = '/website/game-launcher/' + name.replace(/\s+/g, '-');
+                const playerUrl = '/website/game-launcher/games/' + name.replace(/\s+/g, '-') + '/';
                 window.location.href = playerUrl;
             });
 
@@ -405,7 +405,7 @@
                 if (!confirmed) return;
             }
             
-            const playerUrl = '/website/game-launcher/' + (g.name || g.id).replace(/\s+/g, '-');
+            const playerUrl = '/website/game-launcher/games/' + (g.name || g.id).replace(/\s+/g, '-') + '/';
             window.location.href = playerUrl;
         };
 
