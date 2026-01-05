@@ -163,8 +163,7 @@
                     if (!confirmed) return;
                 }
                 
-                const gameUrl = 'games/' + g.id + '/';
-                const playerUrl = '/website/game-launcher/game-player.html?url=' + encodeURIComponent(gameUrl) + '&name=' + encodeURIComponent(name);
+                const playerUrl = '/website/game-launcher/game-player/' + g.id + '/';
                 window.location.href = playerUrl;
             });
 
@@ -408,8 +407,7 @@
                 if (!confirmed) return;
             }
             
-            const gameUrl = 'games/' + g.id + '/';
-            const playerUrl = '/website/game-launcher/game-player.html?url=' + encodeURIComponent(gameUrl) + '&name=' + encodeURIComponent(g.name || g.id);
+            const playerUrl = '/website/game-launcher/game-player/' + g.id + '/';
             window.location.href = playerUrl;
         };
 
